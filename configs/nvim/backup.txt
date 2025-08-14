@@ -1,0 +1,38 @@
+-- Функция для поиска и замены переменных с использованием telescope
+function RenameVariablesWithTelescope()
+    -- Получаем все переменные в файле с помощью регулярного выражения
+    local variables = {}
+    local current_buf = vim.api.nvim_get_current_buf()
+    local lines = vim.api.nvim_buf_get_lines(current_buf, 0, -1, false)
+
+    -- Регулярное выражение для поиска переменных (например, простые имена переменных)
+    for _, line in ipairs(lines) do
+        for var in string.gmatch(line, "%w+") do
+            -- Добавляем найденные переменные в список, если еще не добавлены
+            if not vim.tbl_contains(variables, var) then
+                table.insert(variables, var)
+            end
+        end
+    end
+
+    -- Если переменные найдены
+    if #variables > 0 then
+        -- Используем vim.ui.select для выбора старой переменной
+        vim.ui.select(variables, {
+            prompt = "Select the old variable to rename",
+        }, function(oldVar)
+            -- После выбора старой переменной, запрашиваем новую переменную
+            if oldVar then
+                local newVar = vim.fn.input("Enter the new variable name: ")
+
+                -- Выполняем замену по всему файлу
+                vim.cmd(string.format('%%s/\\<%s\\>/%s/g', oldVar, newVar))
+            end
+        end)
+    else
+        print("No variables found in the current buffer.")
+    end
+end
+
+-- Привязываем команду для вызова через командный режим
+vim.api.nvim_create_user_command('RenameVars', RenameVariablesWithTelescope, {})
