@@ -1,7 +1,0 @@
-sudo pacman -Syu linux-headers gcc make perl
-
-загрузка диска
-
-sudo mount /dev/cdrom /mnt
-sudo /mnt/VBoxLinuxAdditions.run
-sudo reboot

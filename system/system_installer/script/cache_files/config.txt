@@ -1,1 +1,0 @@
-source = ~/.config/.dotfiles/configs/hypr/hyprland_settinigs/source.conf 
