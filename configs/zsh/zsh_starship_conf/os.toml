@@ -1,0 +1,16 @@
+# Show my current os
+[os]
+# For always show my current os
+disabled = false
+
+# style
+style = "bg:white fg:black"
+
+# Format
+format = "[$symbol](bg:white fg:black)[ ](bg:blue fg:white)"
+
+# Symbols for specific system
+[os.symbols]
+Arch = " "
+
+

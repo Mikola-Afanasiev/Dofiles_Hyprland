@@ -1,0 +1,17 @@
+# Show my current directory
+[directory]
+# Truncate to only 1 name directory
+truncation_length = 1
+# Truncate if repo
+truncate_to_repo = true
+# style
+style = "fg:cyan"
+# format
+format = "[$path](bg:blue fg:white)[](bg:#1c1c1c fg:blue)"
+
+# Short name for directory
+[directory.substitutions]
+"~" = " "
+".dotfiles" = "Dotfiles"
+
+

@@ -1,0 +1,8 @@
+# Git branch
+[git_branch]
+# Symbol for branch
+symbol = " "
+# Style
+style = "bold green"
+# Format
+format = " [$branch]($style)"

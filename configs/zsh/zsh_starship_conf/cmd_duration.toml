@@ -1,0 +1,6 @@
+# Cmd duration
+[cmd_duration]
+# If 1000ms then show
+min_time = 1000
+# Format
+format = "[$duration](fg:yellow)"

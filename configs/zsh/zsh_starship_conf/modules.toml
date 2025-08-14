@@ -1,0 +1,17 @@
+# New line
+add_newline = true
+
+# Format for left
+# os, directory, character
+format = """
+╭─ $os$directory$character
+╰─ 
+"""
+
+# Format for right
+# All other modules
+right_format = """
+$git_branch$git_status$cmd_duration
+"""
+
+

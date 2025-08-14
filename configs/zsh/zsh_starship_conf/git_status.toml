@@ -1,0 +1,8 @@
+# Show my git status
+[git_status]
+# Style
+style = "red"
+# untracked files symbol
+untracked = ""
+
+

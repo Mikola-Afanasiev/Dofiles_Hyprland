@@ -1,0 +1,7 @@
+# Character
+[character]
+# Command Success
+success_symbol = "[ ✔](bg:#1c1c1c fg:bold green)[](fg:#1c1c1c)"
+
+# Command error
+error_symbol = "[ ✗](bg:#1c1c1c fg:bold red)[](fg:#1c1c1c)"
