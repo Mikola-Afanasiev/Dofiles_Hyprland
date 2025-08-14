@@ -1,3 +1,8 @@
 yt-videos/
 __pycache__/
 go/
+configs/
+cache/
+scripts/
+system/
+.luarc.json
