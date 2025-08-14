@@ -1,0 +1,14 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "grep",
+        "capabities",
+        "unnamedplus",
+        "clipboard",
+        "pickers",
+        "lspconfig",
+        "configs",
+        "if",
+        "local"
+    ]
+}
