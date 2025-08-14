@@ -1,0 +1,23 @@
+[project]
+name = "Hyprland_installer"
+version = "0.1.0"
+description = "Installer for hypralnd"
+authors = [
+    { name = "Mykola-Afanasiev", email = "afanasiev.nicholas@gmail.com" }
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "python-click>=0.1.4,<0.2.0",
+    "pyyaml>=6.0.2,<7.0.0",
+    "debugpy (>=1.8.14,<2.0.0)",
+    "click (>=8.2.1,<9.0.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false

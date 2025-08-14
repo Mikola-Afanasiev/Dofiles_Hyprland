@@ -1,0 +1,21 @@
+errors:
+  2:
+    message: 
+      EN: "Missing files detecting."
+      RU: "Недастают файлы"
+  3: 
+    message:
+      EN: "Path does't exist"
+  4: 
+    message:
+      EN: "Wrong with Config Manager. Check Paths."
+  5: 
+    message:
+      EN: "Wrong with zsh"
+  6:
+    message:
+      EN: "Wrong with replacing confings"
+  7:
+    message:
+      EN: "Wrong with installing package"
+

@@ -1,0 +1,132 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+ fi
+
+# Set the directory we want to stare zinit and plugins
+ZINIT_HOME="${HOME}/.config/.my_config/configs/zinit/"
+
+#Downoald Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+	mkdir -p "$(dirname $ZINIT_HOME)"
+	git clone git@github.com:zdharma-continuum/zinit.git "$ZINIT_HOME"
+
+fi
+# Source zinit
+source "${ZINIT_HOME}zinit.zsh"
+
+# Powerlevel10k
+if [ ! -d "$HOME/.config/.my_config/configs/powerlevel10k" ]; then
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.config/.my_config/configs/powerlevel10k
+ 	echo 'source ~/.config/.my_config/configs/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+fi
+
+# Source
+source ~/.config/.my_config/configs/powerlevel10k/powerlevel10k.zsh-theme
+
+# Zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+#Add in snippets
+zinit snippet OMZL::git.zsh
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::archlinux
+zinit snippet OMZP::aws
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+zinit snippet OMZP::command-not-found
+
+# Load completions
+autoload -U compinit && compinit
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Keybindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+# History
+HISTSIZE=5000 
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+setopt inc_append_history
+setopt share_history
+setopt hist_expire_dups_first
+setopt hist_verify
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# Aliases
+alias ls='ls --color'
+
+#Vim alias delete
+unalias vim 2>/dev/null
+
+# Function vim for nvim
+function vim {
+    XDG_CONFIG_HOME="$HOME/.config/.my_config/configs" command nvim "$@"
+}
+
+# Function sudo vim for sudo nvim
+function sudo {
+    if [[ "$1" == "vim" ]]; then
+        shift
+        XDG_CONFIG_HOME="$HOME/.config/.my_config/configs/nvim" command sudo -E nvim "$@"
+    else
+        command sudo "$@"
+    fi
+}
+
+# Function
+function hypridle {
+    command hypridle -c "$HOME/.config/.my_config/configs/hypr/hyprland_settinigs/hypridle.conf" "$@" 
+}
+
+function tmux {
+  if [[ "$1" == "attach" ]]; then
+    command tmux -f "$HOME/.config/.my_config/configs/tmux/.tmux.conf" attach "${@:2}"
+  else
+    command tmux -f "$HOME/.config/.my_config/configs/tmux/.tmux.conf" "$@"
+  fi
+}
+
+function pacman() {
+  if [[ "$1" == "-S" ]]; then
+    command sudo -E pacman -S --noconfirm "${@:2}"
+  else
+    command sudo -E pacman -S"$@"
+  fi
+}
+
+# Shell intergrations
+eval "$(fzf --zsh)"
+
+#Commands
+# tmux -f "$HOME/.config/.my_config/configs/tmux/.tmux.conf" 
+# tmux -f "$HOME/.config/.my_config/configs/tmux/.tmux.conf" attach
+
+if [ -z "$NVIM" ] && [ -z "$TMUX" ]; then                                       
+  tmux -f "$HOME/.config/.my_config/configs/tmux/.tmux.conf" attach || 
+  tmux -f "$HOME/.config/.my_config/configs/tmux/.tmux.conf" new-session
+fi
+
+clear

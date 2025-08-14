@@ -1,0 +1,13 @@
+helpers_list:
+  cache_files:
+    - config.txt
+    - keyboardru
+    - zshrc.txt
+  script_utils:
+    - package.py
+    - utils_for_script.py
+    - configs.py
+  configuration_yaml:
+    - helpers.yaml
+    - packages.yaml
+    - paths.yaml
