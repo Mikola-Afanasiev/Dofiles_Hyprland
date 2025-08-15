@@ -1,3 +1,8 @@
 yt-videos/
 __pycache__/
 go/
+configs/
+scripts/calculator/
+scripts/screenshot/
+scripts/waybar/
+scripts/yt-dlp/
