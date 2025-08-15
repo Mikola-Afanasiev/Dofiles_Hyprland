@@ -4,3 +4,5 @@ go/
 configs/music/
 configs/tmux/
 scripts/
+system/
+cache/
