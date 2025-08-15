@@ -1,3 +1,8 @@
 yt-videos/
 __pycache__/
 go/
+cache/
+configs/hypr/
+configs/music/
+configs/tmux/
+scripts/
