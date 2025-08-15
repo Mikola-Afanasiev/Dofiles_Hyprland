@@ -1,3 +1,7 @@
 yt-videos/
 __pycache__/
 go/
+configs/hypr/hyprland_settinigs/
+configs/music/
+configs/tmux/
+scripts/
