@@ -1,0 +1,8 @@
+[apperence]
+width = 50%
+height = 50%
+
+allow_images = true
+
+exec env GTK_THEME=Adwaita:dark pavucontrol
+

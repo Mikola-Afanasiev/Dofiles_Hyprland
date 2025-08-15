@@ -1,0 +1,37 @@
+* {
+	border-radius: 10px;
+	border: none;
+}
+
+image {
+	margin-left: 0.25em;
+	margin-right: 0.25em;
+}
+
+window {
+   	 font-size: 14px;
+   	 background-color: rgba(30, 30, 46, 1);
+   	 color: #f4d9e1;
+   	 border-radius: 16px;
+   	 padding: 10px;
+}
+
+#input {
+   	 background-color: rgba(30, 30, 46, 0.8);
+   	 color: #f4d9e1;
+   	 padding: 5px;
+   	 border-radius: 8px;
+}
+
+#entry {
+   	 background-color: rgba(50, 50, 60, 1);
+    	 color: #ffffff;
+   	 padding: 10px;
+   	 margin-bottom: 5px;
+   	 border-radius: 8px;
+}
+
+#entry:selected {
+   	 background-color: #e5809e;
+   	 color: #ffffff;
+}
